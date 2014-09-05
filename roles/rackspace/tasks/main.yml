@@ -1,0 +1,27 @@
+---
+# tasks file for roles/rackspace
+
+- name: Provision a set of instances
+  local_action:
+    module: rax
+    credentials: "{{ rax_credentials }}"
+    name: "{{ rax_name }}"
+    flavor: "{{ rax_flavor }}"
+    image: "{{ rax_image }}"
+    count: "{{ rax_count }}"
+    group: "{{ group }}"
+    wait: yes
+    files: 
+      /root/.ssh/authorized_keys: ~/.ssh/id_rsa.pub
+  register: rax
+
+- name: Add the instances we created (by public IP) to the group 'test'
+  local_action:
+    module: add_host
+    credentials: "{{ rax_credentials }}"
+    hostname: "{{ item.name }}"
+    ansible_ssh_host: "{{ item.rax_accessipv4 }}"
+    ansible_ssh_pass: "{{ item.rax_adminpass }}"
+    groupname: "{{ group }}"
+  with_items: rax.success
+  when: rax.action == 'create'

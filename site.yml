@@ -1,0 +1,9 @@
+---
+- name: Configuration play
+  hosts: all
+  user: ubuntu
+  gather_facts: False
+  connection: local
+  roles:
+      - rackspace
+     #- absinthe

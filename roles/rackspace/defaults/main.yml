@@ -1,0 +1,9 @@
+---
+# defaults file for roles/rackspace
+
+rax_name: "Absinthe"
+rax_flavor: "performance1-1"
+rax_image: "Ubuntu 14.04 LTS (Trusty Tahr)"
+rax_count: 1
+rax_credentials: ~/.rackspace_cloud_credentials
+group: "test"

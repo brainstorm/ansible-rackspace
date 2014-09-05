@@ -1,0 +1,10 @@
+---
+# tasks file for absinthe
+
+- name: Install packages
+  apt: pkg={{ item }} state=present update_cache=yes
+  with_items:
+    - build-essential
+    - mongodb
+    - redis-server
+    - nginx
