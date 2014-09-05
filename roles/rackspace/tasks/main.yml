@@ -12,7 +12,7 @@
     group: "{{ group }}"
     wait: yes
     files: 
-      /root/.ssh/authorized_keys: ~/.ssh/id_rsa.pub
+      ~/.ssh/authorized_keys: ~/.ssh/id_rsa.pub
   register: rax
 
 - name: Add the instances we created (by public IP) to the group 'test'
