@@ -10,6 +10,11 @@ There is also a Vagrantfile that should allow local deployment and testing befor
 
 All of this with the dynamic inventory script from ansible's plugins/rax.py.
 
+Quickstart
+----------
+
+    ansible-playbook site.yml -i rax.py
+
 Requires a ~/.rackspace_cloud_credentials as specified in: http://docs.ansible.com/guide_rax.html
 
 License
