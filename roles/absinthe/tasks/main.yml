@@ -8,3 +8,4 @@
     - mongodb
     - redis-server
     - nginx
+  with_items: rax.instances
