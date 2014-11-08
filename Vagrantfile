@@ -11,12 +11,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "ubuntu_14.04"
-  config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/20140902/trusty-server-cloudimg-amd64-vagrant-disk1.box"
+  config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "site.yml"
 #    ansible.verbose = 'vvvv'
-    ansible.inventory_path = '.vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory'
+#    ansible.inventory_path = '.vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory'
     ansible.extra_vars = { ansible_ssh_user: 'vagrant' }
   end
 
