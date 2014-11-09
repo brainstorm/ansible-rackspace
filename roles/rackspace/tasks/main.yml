@@ -13,9 +13,9 @@
     wait: yes
     files: 
       ~/.ssh/authorized_keys: ~/.ssh/id_rsa.pub
-  register: rax
+  register: pacemaker_rax
 
-- name: Add the instances we created (by public IP) to the group 'test'
+- name: Add the instances we created (by public IP) to the group {{ group }}
   local_action:
     module: add_host
     credentials: "{{ rax_credentials }}"
@@ -23,5 +23,5 @@
     ansible_ssh_host: "{{ item.rax_accessipv4 }}"
     ansible_ssh_pass: "{{ item.rax_adminpass }}"
     groupname: "{{ group }}"
-  with_items: rax.success
-  when: rax.action == 'create'
+  with_items: pacemaker_rax.success
+  when: pacemaker_rax.action == 'create'

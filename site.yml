@@ -1,9 +1,15 @@
 ---
-- name: Configuration play
+- name: Rackspace instantiation
   hosts: localhost
   user: root 
   gather_facts: False
   connection: local
   roles:
-     - rackspace
-     - absinthe
+    - rackspace
+
+- name: Deployment of {{ group }} 
+  hosts: panalytics
+  user: root
+  gather_facts: False
+  roles:
+    - absinthe
