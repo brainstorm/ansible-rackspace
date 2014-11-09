@@ -7,8 +7,8 @@
   roles:
     - rackspace
 
-- name: Deployment of {{ group }} 
-  hosts: panalytics
+- name: Deployment of panalytics
+  hosts: panalytics 
   user: root
   gather_facts: False
   roles:

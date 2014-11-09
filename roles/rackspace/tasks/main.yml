@@ -9,7 +9,7 @@
     flavor: "{{ rax_flavor }}"
     image: "{{ rax_image }}"
     count: "{{ rax_count }}"
-    group: "{{ group }}"
+    group: panalytics
     wait: yes
     files: 
       ~/.ssh/authorized_keys: ~/.ssh/id_rsa.pub
@@ -22,6 +22,6 @@
     hostname: "{{ item.name }}"
     ansible_ssh_host: "{{ item.rax_accessipv4 }}"
     ansible_ssh_pass: "{{ item.rax_adminpass }}"
-    groupname: "{{ group }}"
+    groups: panalytics
   with_items: pacemaker_rax.success
   when: pacemaker_rax.action == 'create'
